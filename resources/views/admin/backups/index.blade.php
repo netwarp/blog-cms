@@ -23,6 +23,14 @@
         <div class="ui positive message">
             {{ session('success') }}
         </div>
+    @elseif(count($errors) > 0)
+        <div class="ui negative message">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
     <table class="ui celled table">
         <thead>
