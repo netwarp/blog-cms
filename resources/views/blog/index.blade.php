@@ -6,8 +6,10 @@
 	<div class="panel panel-default">
 	    <div class="panel-body">
 	    	<h2><a href="/article/{{ $article->id }}/{{ $article->slug }}">{{ $article->title }}</a></h2>
-		    <p><small class="glyphicon glyphicon-time"></small> {{ $article->created_at }}</p>
-		    
+		    <p>
+		    	<small class="glyphicon glyphicon-calendar"></small> {{ $article->created_at }}
+		    	<span class="pull-right"><small class="glyphicon glyphicon-comment"></small> 0 commentaires</span>
+		    </p>
 	    </div>
 	    <a href="/article/{{ $article->id }}/{{ $article->slug }}"><img class="img-responsive" src="{{ $article->image }}" alt=""></a>
 	    <div class="panel-body">
