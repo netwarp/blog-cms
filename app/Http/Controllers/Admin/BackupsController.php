@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Artisan;
-use Spatie\Backup\Tasks\Backup\Zip;
+// use Spatie\Backup\Tasks\Backup\Zip;
 use Storage;
 use Zipper;
+use DB;
 
 class BackupsController extends Controller
 {
@@ -23,6 +24,8 @@ class BackupsController extends Controller
     public function make()
     {
         Artisan::call('backup:run', []);
+
+      //  Artisan::call('db:backup --database= --destination=local --destinationPath=backup --compression=null');
 
         $all_zip = Storage::files('backups/http---localhost');
         $zip = end($all_zip);
@@ -42,9 +45,12 @@ class BackupsController extends Controller
 
         $file = $request->file('file');
         $zipper = Zipper::make($file);
-        $zipper->extractTo(storage_path());
+        $zipper->folder('/var/www/blog/storage')->extractTo(storage_path());
 
-        dd($zipper);
+        $sql = $zipper->getFileContent('/db-dumps/homestead.sql');
+        DB::unprepared($sql);
+
+       return redirect()->back()->with('success', 'Images réstorées');
     }
 
     public function download($file)
