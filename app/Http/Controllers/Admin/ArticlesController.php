@@ -69,6 +69,7 @@ class ArticlesController extends Controller
                 $alt = sha1($src);
             }
             $image->setAttribute('src', "/api/source/articles/$article->id/$alt.jpg");
+            $image->setAttribute('class', 'img-responsive');
 
             Storage::put("articles/$article->id/$alt.jpg", $img->stream());
         }
