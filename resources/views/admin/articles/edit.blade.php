@@ -16,14 +16,14 @@
     <script>
         tinymce.init({
             selector: 'textarea',
-            plugins: 'paste fullscreen codesample code image',
+            plugins: 'paste fullscreen codesample code image media',
             paste_data_images: true,
             images_upload_url: 'http://localhost:8000',
             images_upload_base_path: 'http://localhost:8000/assets',
             location : 'http://localhost:8000/assets/test.jpg',
             menubar: true,
             content_style: ".mce-content-body  {font-size: 14px;}",
-            toolbar: 'undo redo bold italic alignleft aligncenter alignright codesample fullscreen code image'
+            toolbar: 'undo redo bold italic alignleft aligncenter alignright codesample fullscreen code image media'
        })
         tinymce.init({
             selector: '#image',
@@ -34,37 +34,65 @@
         })
     </script> 
 
-    <div class="ui three item stackable tabs menu">
-        <a href="/admin/articles" class="item">Articles</a>
-        <a href="/admin/articles/create" class="item">Créer nouveau</a>
-        <a href="/admin/articles" class="item">Voir tout</a>
+    <div class="col s12">
+        <nav class="blue-grey darken-2">
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="#!" class="breadcrumb">Admin</a>
+                    <a href="#!" class="breadcrumb">Articles</a>
+                    <a href="#!" class="breadcrumb">Edit</a>
+                </div>
+            </div>
+        </nav>
     </div>
 
-    <div id="id"></div>
-    <form class="ui form" action="/admin/articles/{{ $article->id }}" method="post" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <input type="hidden" name="_method" value="PUT">
-        <div class="field">
-            <label>Titre</label>
-            <input type="text" name="title" value="{{ $article->title }}">
+    @if (count($errors) > 0)
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="field">
-            <input type="file" name="image" id="file" placeholder="glisser déposer une image">
+    @endif
+
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h4>Editer l'article</h4>
+                    <form class="ui form" action="/admin/articles/{{ $article->id }}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="_method" value="PUT">
+                        <div class="input-field">
+                            <label for="title">Titre</label>
+                            <input type="text" name="title" title="Titre" value="{{ $article->title }}">
+                        </div>
+                        <div class="input-field">
+                            <input type="file" name="image" id="file" placeholder="glisser déposer une image">
+                        </div>
+                        <div class="input-field">
+                            <label>Tags</label>
+                            <input type="text" name="tags" title="tags" value="{{ $article->tags }}">
+                        </div>
+                        <div class="input-field">
+                            <label>Apercu</label>
+                            <textarea name="overview" rows="4" cols="40" id="id" title="overview">{{ $article->overview }}</textarea>
+                        </div>
+                        <div class="input-field">
+                            <label>Contenu</label>
+                            <textarea name="content" rows="15" title="content">{{ $article->content }}</textarea>
+                        </div>
+                        <div class="input-field">
+                            <button type="submit" class="btn">GO</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="field">
-            <label>Tags</label>
-            <input type="text" name="tags">
-        </div>
-        <div class="field">
-            <label>Apercu</label>
-            <textarea name="overview" rows="4" cols="40" id="id">{{ $article->overview }}</textarea>
-        </div>
-        <div class="field">
-            <label>Contenu</label>
-            <textarea name="content" rows="15" cols="">{{ $article->content }}</textarea>
-        </div>
-        <div class="field">
-            <button type="submit" class="ui button">GO</button>
-        </div>
-    </form>
+    </div>
 @endsection
