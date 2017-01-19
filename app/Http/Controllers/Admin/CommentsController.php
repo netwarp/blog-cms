@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
+
 
 class CommentsController extends Controller
 {
@@ -14,7 +16,9 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::paginate(10);
+
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -46,7 +50,9 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        return view('admin.comments.show', compact('comment'));
     }
 
     /**
@@ -80,6 +86,9 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+
+        return redirect()->back()->with('success', 'Commentaire supprimé !');
     }
 }
