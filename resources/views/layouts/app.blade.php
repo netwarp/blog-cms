@@ -21,7 +21,11 @@
     </script>
 
     <style>
-    #footer {
+        .navbar {
+            min-height: 80px;
+        }
+
+        #footer {
             background-color: #222;
             border-color: #090909;
             color: #f5f8fa;
@@ -44,8 +48,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        test
+                    <a class="navbar-brand" href="/">
+                        <img src="/img/blogstuff.jpg" alt="logo">
                     </a>
                 </div>
 
@@ -67,26 +71,29 @@
                 <div class="col-md-4">
                     <div class="well">
                         <h4>Recherche</h4>
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                            </span>
-                        </div>
+                        <form action="/recherche" method="GET">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="word">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                                </span>
+                            </div>
+                        </form>
+
                     </div>
                     <div class="well">
                         <h4>Categories</h4>
                         <div class="row">
                             <div class="col-lg-6">
                                 @php
-                                    $categories = ['Tor', 'VPN', 'Cryptographie', 'Sécurité']
+                                    $categories = ['Tor', 'VPN', 'Sécurité', 'Communication']
                                 @endphp
                                 <ul class="list-unstyled">
                                     
                                     @foreach($categories as $category)
-                                        <li><a href="#">{{ $category }}</a></li>
+                                        <li><a href="/tag/{{ strtolower($category) }}">{{ $category }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -96,7 +103,7 @@
                                 @endphp
                                 <ul class="list-unstyled">
                                     @foreach($categories as $category)
-                                        <li><a href="#">{{ $category }}</a></li>
+                                        <li><a href="/tag/{{ strtolower($category) }}">{{ $category }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -108,10 +115,10 @@
                     </div>
                     <div class="well">
                         <h4>Abonnez vous à la newsletter <br> <small>on spam pas promis</small></h4>
-                        <form action="/newsletter" method="POST">
+                        <form action="/newsletters" method="POST">
                             {{ csrf_field() }}
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
+                                <input type="email" class="form-control" name="email" placeholder="Email">
                                     <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">Envoie</button>
                                 </span>
