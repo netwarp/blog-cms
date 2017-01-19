@@ -13,4 +13,8 @@ class Article extends Model
         'overview',
         'content'
     ];
+
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
+    }
 }
