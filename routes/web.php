@@ -13,11 +13,13 @@
 
 Route::get('/', 'BlogController@getIndex');
 
-Route::get('/recherche', ['as' => 'getRecherche', 'uses' => 'BlogController@getRecherche']);
+Route::get('/recherche', ['as' => 'getRecherche', 'uses' => 'BlogController@getSearch']);
 
 Route::get('/article/{id}/{slug}', 'BlogController@getArticle');
 
-Route::post('/article/{id}/{slug}', 'BlogController@postComment');
+Route::post('/article/{id}', 'BlogController@postComment');
+
+Route::post('newsletters', 'BlogController@postNewsletters');
 
 Route::get('/login', ['as' => 'getLogin', 'uses' => 'BlogController@getLogin']);
 
