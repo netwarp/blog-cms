@@ -29,6 +29,8 @@ Route::get('/a-propos', ['as' => 'getApropos', 'uses' => 'BlogController@getApro
 
 Route::get('/projets', 'BlogController@getProjets');
 
+Route::get('soutien', 'BlogController@getSupport');
+
 Route::get('/contact', 'BlogController@getContact');
 
 Route::post('/contact', 'BlogController@postContact');

@@ -7,7 +7,7 @@
 	    <div class="panel-body">
 	    	<h2><a href="/article/{{ $article->id }}/{{ $article->slug }}">{{ $article->title }}</a></h2>
 		    <p>
-		    	<small class="glyphicon glyphicon-calendar"></small> {{ $article->created_at }}
+		    	<small class="glyphicon glyphicon-calendar"></small> {{ date('d F Y', strtotime($article->created_at)) }}
 		    	<span class="pull-right"><small class="glyphicon glyphicon-comment"></small> 0 commentaires</span>
 		    </p>
 	    </div>

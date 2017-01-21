@@ -69,6 +69,10 @@ class BlogController extends Controller {
     	return view('blog.projets');
     }
 
+    public function getSupport() {
+        return view('blog.support');
+    }
+
     public function getApropos() {
         return view('blog.a-propos');
     }

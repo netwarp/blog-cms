@@ -56,6 +56,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/projets">Projets</a></li>
+                        <li><a href="/soutien">Soutien</a></li>
                         <li><a href="/a-propos">A propos</a></li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>
@@ -110,8 +111,8 @@
                         </div>
                     </div>
                     <div class="well">
-                        <h4>Side Widget Well</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                        <h4>On est ou là ?</h4>
+                        <p>Sur ce blog ça cause de de code, de politique parfois, et d'outils dédiés à la sécurité et au contournement de la censure. Rien à foutre c'est mon blog je fais ce que je veux. <br> Plus d'infos sur <a href="/a-propos">cette page</a></p>
                     </div>
                     <div class="well">
                         <h4>Abonnez vous à la newsletter <br> <small>on spam pas promis</small></h4>
