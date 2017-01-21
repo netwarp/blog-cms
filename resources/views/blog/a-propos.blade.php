@@ -34,47 +34,4 @@
             </p>
         </div>
     </div>
-
-    <div class="row">
-                    <div class="col-md-3">
-                        <div class="panel panel-default text-center service">
-                            <div class="panel-body">
-                                <h4><i class="fa fa-code"></i><br>Application web</h4>
-                                <p>
-                                    Développement de site internet, site vitrine ou CMS personnalisé.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="panel panel-default text-center service">
-                            <div class="panel-body">
-                                <h4><i class="fa fa-mobile"></i><br>Site Responsive</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis distinctio perspiciatis, nesciunt similique neque cum culpa, inventore, tenetur odio animi enim ex quam consequuntur eius, vero maxime modi facilis. Dolores!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="panel panel-default text-center service">
-                            <div class="panel-body">
-                                <h4><i class="fa fa-newspaper-o"></i><br>Newsletters</h4>
-                                <p>
-                                    Les mails permettent de fidéliser vos internautes, je vous propose la création de templates adaptés à votre charte graphique.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="panel panel-default text-center service">
-                            <div class="panel-body">
-                                <h4><i class="fa fa-mortar-board"></i><br>Formation</h4>
-                                <p>
-                                    Bases des languages HTML & CSS
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 @endsection

@@ -2,16 +2,16 @@
 
 @section('content')
 
-		<div class="col s12">
-	        <nav class="blue-grey darken-2">
-	            <div class="nav-wrapper">
-	                <div class="col s12">
-	                    <a href="#!" class="breadcrumb">Admin</a>
-	                    <a href="#!" class="breadcrumb">Articles</a>
-	                </div>
-	            </div>
-	        </nav>
-	    </div>
+	<div class="col s12">
+		<nav class="blue-grey darken-2">
+			<div class="nav-wrapper">
+				<div class="col s12">
+					<a href="/admin" class="breadcrumb">Admin</a>
+					<a href="/admin/articles" class="breadcrumb">Articles</a>
+				</div>
+			</div>
+		</nav>
+	</div>
 
 	<div class="row">
 		<div class="col s12">

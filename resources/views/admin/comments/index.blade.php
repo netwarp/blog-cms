@@ -5,8 +5,8 @@
     <nav class="blue-grey darken-2">
         <div class="nav-wrapper">
             <div class="col s12">
-                <a href="#!" class="breadcrumb">Admin</a>
-                <a href="#!" class="breadcrumb">Comments</a>
+                <a href="/admin" class="breadcrumb">Admin</a>
+                <a href="/admin/comments" class="breadcrumb">Comments</a>
             </div>
         </div>
     </nav>

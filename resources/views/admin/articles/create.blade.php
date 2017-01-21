@@ -28,9 +28,9 @@
         <nav class="blue-grey darken-2">
             <div class="nav-wrapper">
                 <div class="col s12">
-                    <a href="#!" class="breadcrumb">Admin</a>
-                    <a href="#!" class="breadcrumb">Articles</a>
-                    <a href="#!" class="breadcrumb">Create</a>
+                    <a href="/admin" class="breadcrumb">Admin</a>
+                    <a href="/admin/articles" class="breadcrumb">Articles</a>
+                    <a href="/admin/articles/create" class="breadcrumb">Create</a>
                 </div>
             </div>
         </nav>
