@@ -19,9 +19,9 @@ elixir(function(mix) {
 	//mix.copy('./node_modules/jquery/dist/jquery.min.js', './public/js/jquery.min.js')
 
 	//mix.copy('./node_modules/tinymce/tinymce.js', './public/js/tinymce.js')
-	mix.copy('./node_modules/materialize-css/dist/js/materialize.js', './public/js/materialize.js')
+	//mix.copy('./node_modules/materialize-css/dist/js/materialize.js', './public/js/materialize.js')
 
-   //mix.sass('app.scss')
+   mix.sass('app.scss')
   	//mix.webpack('app.js')
 
 	/*

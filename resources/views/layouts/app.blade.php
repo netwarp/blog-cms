@@ -19,23 +19,10 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-
-    <style>
-        .navbar {
-            min-height: 70px;
-        }
-
-        #footer {
-            background-color: #222;
-            border-color: #090909;
-            color: #f5f8fa;
-            padding: 3rem 0;
-        }
-    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse" style="min-height: 70px">
             <div class="container">
                 <div class="navbar-header">
 

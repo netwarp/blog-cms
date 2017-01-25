@@ -20,10 +20,10 @@
 @endforeach
 <ul class="pager">
     <li class="previous">
-        <a href="#">← Older</a>
+        <a href="{{ $articles->previousPageUrl() }}">← Plus ancien</a>
     </li>
     <li class="next">
-        <a href="#">Newer →</a>
+        <a href="{{ $articles->nextPageUrl() }}">Plus récent →</a>
     </li>
 </ul>
 @endsection
