@@ -19,7 +19,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = DB::table('articles')->get();
+        $articles = DB::table('articles')->orderBy('id', 'desc')->paginate(4);
         return view('admin.articles.index', compact('articles'));
     }
 

@@ -25,7 +25,7 @@
 			</div>
 		@else
 			<div class="alert alert-info">
-				Bien que nous soyons partisans d'une liberté d'expression totale, nous rappelons à nos intervenants que l'éspace de commentaires n'est pas un défouloire et que la courtoisie y est de mise. <br>
+				Bien que nous soyons partisans d'une liberté d'expression totale, nous rappelons à nos lecteurs que l'éspace de commentaires n'est pas un défouloire et que la courtoisie y est de mise. <br>
 				La modération.
 			</div>
 		@endif

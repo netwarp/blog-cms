@@ -13,11 +13,17 @@ require('laravel-elixir-vue-2');
  |
  */
 
-elixir(mix => {
+elixir(function(mix) {
+//	mix.copy('./node_modules/bootstrap-sass/assets/stylesheets/**/*', './resources/assets/sass/boostrap')
+
+	//mix.copy('./node_modules/jquery/dist/jquery.min.js', './public/js/jquery.min.js')
+
+	//mix.copy('./node_modules/tinymce/tinymce.js', './public/js/tinymce.js')
+	mix.copy('./node_modules/materialize-css/dist/js/materialize.js', './public/js/materialize.js')
+
    //mix.sass('app.scss')
-  	mix.webpack('app.js')
-  //	mix.less('./resources/assets/semantic/src/semantic.less', 'public/css/admin.css')
-    //mix.copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/fonts/bootstrap')
+  	//mix.webpack('app.js')
+
 	/*
   	mix.copy([
   		'node_modules/jquery/dist/jquery.min.js',

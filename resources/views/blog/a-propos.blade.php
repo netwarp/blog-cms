@@ -26,9 +26,10 @@
                 <ul>
                     <li>développement de site internet</li>
                     <li>assistance à la configuration et au déploiement de votre application</li>
+                    <li>template d'email marketing</li>
                     <li>création de bannière publicitaire animée</li>
-                    <li>Achat de nom de domaine</li>
-                    <li>Formation sur les bases du HTML et CSS</li>
+                    <li>achat de nom de domaine</li>
+                    <li>formation sur les bases du HTML et CSS</li>
                 </ul>
                 <a href="/contact">Contactez moi</a>
             </p>

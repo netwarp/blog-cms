@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>blogstuff.io - blog d'un codeur</title>
+    <title>medialogs.fr - blog d'un codeur</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -112,7 +112,7 @@
                     </div>
                     <div class="well">
                         <h4>On est ou là ?</h4>
-                        <p>Sur ce blog ça cause de de code, de politique parfois, et d'outils dédiés à la sécurité et au contournement de la censure. Rien à foutre c'est mon blog je fais ce que je veux. <br> Plus d'infos sur <a href="/a-propos">cette page</a></p>
+                        <p>Sur ce blog ça cause de code, de politique parfois, et d'outils dédiés à la sécurité et au contournement de la censure.<br> Plus d'infos sur <a href="/a-propos">cette page</a></p>
                     </div>
                     <div class="well">
                         <h4>Abonnez vous à la newsletter <br> <small>on spam pas promis</small></h4>
@@ -125,6 +125,20 @@
                                 </span>
                             </div>
                         </form>
+                    </div>
+
+                    <div class="well">
+                        <h4>Articles au hasard</h4>
+                        @php
+                            $articles = DB::table('articles')->inRandomOrder()->limit(5)->get();
+                        @endphp
+
+                        @foreach($articles as $article)
+                            <div>
+                                <h5><a href="/article/{{ $article->id }}/{{ $article->slug }}">{{ $article->title }}</a></h5>
+                                <hr>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="page-header">Derniers articles</h1>
 @foreach($articles as $article)
 	<div class="panel panel-default">
 	    <div class="panel-body">
