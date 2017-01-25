@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Article;
 
 class BlogController extends Controller {
     
@@ -63,6 +64,16 @@ class BlogController extends Controller {
         $email = $request->input('email');
 
         dd($email);
+    }
+
+    public function getTag($tag) {
+        $articles = Article::withAnyTag($tag)->get();
+
+        if ($articles->isEmpty()) {
+            $articles = DB::table('articles')->inRandomOrder()->limit(5)->get();
+        }
+
+        return view('blog.index', compact('articles'));
     }
 
     public function getProjets() {

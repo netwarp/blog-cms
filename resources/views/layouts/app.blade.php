@@ -132,18 +132,16 @@
                         @php
                             $articles = DB::table('articles')->inRandomOrder()->limit(5)->get();
                         @endphp
-
-                        @foreach($articles as $article)
-                            <div>
-                                <h5><a href="/article/{{ $article->id }}/{{ $article->slug }}">{{ $article->title }}</a></h5>
-                                <hr>
-                            </div>
-                        @endforeach
+                        
+                        <ul class="list-unstyled">
+                            @foreach($articles as $article)
+                                <li><a href="/article/{{ $article->id }}/{{ $article->slug }}">{{ $article->title }}</a></li>
+                            @endforeach
+                        </ul>                
                     </div>
                 </div>
             </div>
         </div>
-        
         
         <footer id="footer">
             <div class="container">
