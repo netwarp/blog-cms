@@ -22,7 +22,7 @@
 
     <style>
         .navbar {
-            min-height: 80px;
+            min-height: 70px;
         }
 
         #footer {
@@ -49,7 +49,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="/">
-                        <img src="/img/blogstuff.jpg" alt="logo">
+                        <img src="/img/medialogs.jpg" alt="logo" width="280">
                     </a>
                 </div>
 
