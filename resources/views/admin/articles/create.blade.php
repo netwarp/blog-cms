@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-    {{-- 
+
     <script src="/js/jquery.min.js"></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/image/plugin.js"></script>
@@ -9,10 +9,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/fullscreen/plugin.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/codesample/plugin.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/bbcode/plugin.js"></script>
-     --}}
+
 
 
     <script src="/js/admin/articles_forms.js"></script> 
+
 
     <div class="col s12">
         <nav class="blue-grey darken-2">
