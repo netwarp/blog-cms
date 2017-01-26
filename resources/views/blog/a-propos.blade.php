@@ -19,8 +19,7 @@
                 Pour me présenter dans les grandes lignes, disons que je suis un acco de code et de nouvelles technologies en quête permanente de nouvelles choses à apprendre et à partager. <br>
                 Je vis dans les Haut-de-Seine dans une charmante commune près de la Défense et travaille comme consultant pour différentes entreprises en France et au Royaume-Uni depuis début 2015.
             </p>
-            <h2>Ma publicité</h2>
-            <h3>Et oui c'est mon blog il y a pas de raison :)</h3>
+            <h2>Mes services</h2>
             <p>
                 Développeur indépendant, j'ai aussi quelques services à vous proposer : 
                 <ul>

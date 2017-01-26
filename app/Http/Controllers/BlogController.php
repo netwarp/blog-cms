@@ -24,8 +24,9 @@ class BlogController extends Controller {
     public function getSearch(Request $request) {
         $word = $request->input('word');
 
+        $articles = Article::where('content', 'LIKE', "%$word%")->paginate(4); 
 
-        return view('blog.index');
+        return view('blog.index', compact('articles'));
     }
 
     public function getArticle($id, $slug) {
@@ -56,6 +57,8 @@ class BlogController extends Controller {
             'ip' => sha1($request->ip()),
             'created_at' => Carbon::now()
         ]);
+
+        DB::table('articles')->whereIn('id', [$id])->increment('nb_comments');
 
         return redirect()->back()->with('success', 'Votre commentaire a bien été envoyé');
     }
