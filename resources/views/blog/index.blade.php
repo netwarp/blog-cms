@@ -25,6 +25,8 @@
 		    </div>
 		</div>
 	@endforeach
+	{{ $articles->links('vendor.pagination.default') }}
+	{{-- 
 	@if($articles->count() > 5)
 		<ul class="pager">
 		    <li class="previous">
@@ -35,4 +37,5 @@
 		    </li>
 		</ul>
 	@endif
+	 --}}
 @endsection
