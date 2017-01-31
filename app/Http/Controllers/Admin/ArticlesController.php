@@ -55,6 +55,10 @@ class ArticlesController extends Controller
         $article->overview = $request->input('overview');
         $article->content = '';
         $article->save();
+
+        $tags = $request->input('tags');
+        $tags = explode(' ', $tags);
+        $article->tag($tags);
         
         $doc = new DOMDocument();
         $doc->loadHTML($request->input('content'));
@@ -104,6 +108,7 @@ class ArticlesController extends Controller
     public function show($id)
     {
         $article = Article::findOrFail($id);
+
         return view('admin.articles.edit', compact('article'));
     }
 
@@ -134,6 +139,10 @@ class ArticlesController extends Controller
             'slug' => str_slug($request->input('title')),
             'overview' => $request->input('overview'),
         ]);
+
+        $tags = $request->input('tags');
+        $tags = explode(' ', $tags);
+        $article->retag($tags);
 
         $doc = new DOMDocument();
         $doc->loadHTML($request->input('content'));

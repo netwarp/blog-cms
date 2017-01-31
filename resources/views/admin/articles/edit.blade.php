@@ -75,9 +75,15 @@
                         <div class="input-field">
                             <input type="file" name="image" id="file" placeholder="glisser déposer une image">
                         </div>
+                        @php
+                            $tags = '';
+                            foreach ($article->tags as $tag) {
+                                $tags .= $tag->name . ' ';
+                            }
+                        @endphp
                         <div class="input-field">
                             <label>Tags</label>
-                            <input type="text" name="tags" title="tags" value="{{ $article->tags }}">
+                            <input type="text" name="tags" title="tags" value="{{ $tags }}">
                         </div>
                         <div class="input-field">
                             <label>Apercu</label>

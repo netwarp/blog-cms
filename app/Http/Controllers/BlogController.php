@@ -70,11 +70,7 @@ class BlogController extends Controller {
     }
 
     public function getTag($tag) {
-        $articles = Article::withAnyTag($tag)->get();
-
-        if ($articles->isEmpty()) {
-            $articles = DB::table('articles')->inRandomOrder()->limit(5)->get();
-        }
+        $articles = Article::withAnyTag($tag)->paginate(5);
 
         return view('blog.index', compact('articles'));
     }
