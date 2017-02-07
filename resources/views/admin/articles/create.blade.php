@@ -1,28 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 
-
     <script src="/js/jquery.min.js"></script>
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/image/plugin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/paste/plugin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/fullscreen/plugin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/codesample/plugin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/bbcode/plugin.js"></script>
-
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'paste fullscreen codesample code image media',
-            paste_data_images: true,
-            images_upload_url: '/api/upload',
-            images_upload_base_path: '/api/upload',
-            location : '/api/upload',
-            menubar: true,
-            content_style: ".mce-content-body  {font-size: 14px;}",
-            toolbar: 'undo redo bold italic alignleft aligncenter alignright codesample fullscreen code image media'
-        })
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
     <div class="col s12">
         <nav class="blue-grey darken-2">
@@ -68,14 +48,21 @@
                             <label>Tags</label>
                             <input type="text" name="tags" title="tags">
                         </div>
+                        {{--
                         <div class="input-field">
                             <label>Apercu</label>
                             <textarea name="overview" rows="4" cols="40" id="id" title="overview"></textarea>
                         </div>
+                        --}}
+                        <div class="input-field">
+                            <textarea name="content" id="editor"></textarea>
+                        </div>
+                        {{--
                         <div class="input-field">
                             <label>Contenu</label>
                             <textarea name="content" rows="15" title="content"></textarea>
                         </div>
+                        --}}
                         <div class="input-field">
                             <button type="submit" class="btn">GO</button>
                         </div>
@@ -84,4 +71,13 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+    <script>
+        var simplemde = new SimpleMDE({
+            element: document.getElementById('editor'),
+            placeholder: 'Content here',
+        });
+    </script>
 @endsection

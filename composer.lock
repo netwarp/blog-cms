@@ -4,9 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f2c13d53b6ee68d6400db00646cf1da6",
-    "content-hash": "e11c89a33946b68990a0492659b13330",
+    "hash": "f2d64ad285ae980923e17fcd281cc52d",
+    "content-hash": "12fe05f1103b813d8f3e9e2492b92d34",
     "packages": [
+        {
+            "name": "andreasindal/laravel-markdown",
+            "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreasindal/laravel-markdown.git",
+                "reference": "9b71f768e2327806a6ef2c7ecb091138702b9f2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreasindal/laravel-markdown/zipball/9b71f768e2327806a6ef2c7ecb091138702b9f2e",
+                "reference": "9b71f768e2327806a6ef2c7ecb091138702b9f2e",
+                "shasum": ""
+            },
+            "require": {
+                "erusev/parsedown": "^1.6",
+                "illuminate/support": "^5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Indal\\Markdown\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Indal",
+                    "email": "andreas@rocketship.se"
+                }
+            ],
+            "description": "Simple Blade directive for markdown parsing.",
+            "time": "2017-01-18 22:14:48"
+        },
         {
             "name": "chumper/zipper",
             "version": "0.6.1",
@@ -210,6 +253,48 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "erusev/parsedown",
+            "version": "1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown.git",
+                "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/20ff8bbb57205368b4b42d094642a3e52dac85fb",
+                "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Parsedown": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "Parser for Markdown.",
+            "homepage": "http://parsedown.org",
+            "keywords": [
+                "markdown",
+                "parser"
+            ],
+            "time": "2016-11-02 15:56:58"
         },
         {
             "name": "guzzlehttp/psr7",

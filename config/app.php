@@ -180,7 +180,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
-        \Conner\Tagging\Providers\TaggingServiceProvider::class
+        \Conner\Tagging\Providers\TaggingServiceProvider::class,
+        Indal\Markdown\MarkdownServiceProvider::class,
 
     ],
 
@@ -230,7 +231,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Zipper' => 'Chumper\Zipper\Zipper'
+        'Zipper' => 'Chumper\Zipper\Zipper',
+        'Markdown' => Indal\Markdown\Facade::class,
     ],
 
 ];

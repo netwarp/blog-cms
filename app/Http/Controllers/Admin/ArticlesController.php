@@ -9,6 +9,7 @@ use App\Models\Article;
 use DOMDocument;
 use Image;
 use Storage;
+use Markdown;
 
 class ArticlesController extends Controller
 {
@@ -41,18 +42,20 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+        /*
         $this->validate($request, [
             'title' => 'required',
             'image' => 'image',
             'overview' => 'required',
             'content' => 'required'
         ]);
+        */
 
         $article = new Article;
         $article->title = $request->input('title');
         $article->image = '';
         $article->slug = str_slug($request->input('title', '-'));
-        $article->overview = $request->input('overview');
+        $article->overview = '';
         $article->content = '';
         $article->save();
 
@@ -61,7 +64,9 @@ class ArticlesController extends Controller
         $article->tag($tags);
         
         $doc = new DOMDocument();
-        $doc->loadHTML($request->input('content'));
+        $doc->loadHTML(Markdown::parse($request->input('content')));
+
+        $article->overview = $doc->getElementsByTagName('p')->item(0)->nodeValue;
 
         foreach ($doc->getElementsByTagName('img') as $image) {
             $src = $image->getAttribute('src');
@@ -134,18 +139,20 @@ class ArticlesController extends Controller
     {
         $article = Article::findOrFail($id);
 
+        $doc = new DOMDocument();
+        $doc->loadHTML($request->input('content'));
+
         $article->update([
             'title' => $request->input('title'),
             'slug' => str_slug($request->input('title')),
-            'overview' => $request->input('overview'),
+            'overview' => $doc->getElementsByTagName('p')->item(0)->nodeValue,
+            'content' => $request->input('content')
         ]);
 
         $tags = $request->input('tags');
         $tags = explode(' ', $tags);
         $article->retag($tags);
 
-        $doc = new DOMDocument();
-        $doc->loadHTML($request->input('content'));
         foreach ($doc->getElementsByTagName('img') as $image) {
             $src = $image->getAttribute('src');
             $pattern = 'source/articles';

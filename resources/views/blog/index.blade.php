@@ -17,12 +17,13 @@
 			    	<span class="pull-right"><small class="glyphicon glyphicon-comment"></small> {{ $article->nb_comments }} commentaire{{ $article->nb_comments >1 ? 's' : '' }}</span>
 			    </p>
 		    </div>
-		    <a href="/article/{{ $article->id }}/{{ $article->slug }}"><img class="img-responsive" src="{{ $article->image }}" alt=""></a>
+		    @if(!empty($article->image))
+				<a href="/article/{{ $article->id }}/{{ $article->slug }}"><img class="img-responsive" src="{{ $article->image }}" alt=""></a>
+			@endif
 		    <div class="panel-body">
-		    	{!! $article->overview !!}
-
-		    	<a href="/article/{{ $article->id }}/{{ $article->slug }}" class="btn btn-primary">Lire plus <span class="glyphicon glyphicon-chevron-right"></span></a>
-		    </div>
+				@markdown($article->overview)
+				<a href="/article/{{ $article->id }}/{{ $article->slug }}" class="btn btn-primary">Lire plus <span class="glyphicon glyphicon-chevron-right"></span></a>
+		     </div>
 		</div>
 	@endforeach
 	{{ $articles->links('vendor.pagination.default') }}

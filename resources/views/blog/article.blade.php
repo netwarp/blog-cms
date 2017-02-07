@@ -2,17 +2,19 @@
 
 @section('content')
 <div class="panel panel-default" id="article-content">
-	<img src="{{ $article->image }}" alt="" class="img-responsive">
+	@if(!empty($article->image))
+		<img src="{{ $article->image }}" alt="" class="img-responsive">
+	@endif
 	<div class="panel-body">
-		
+		<article>
 		<h1>{{ $article->title }}</h1>
-		{!! $article->overview !!}
 		<br>
-		{!! $article->content !!}
+		@markdown($article->content)
 		<hr>
 		<div>
 			{{ date('d F Y', strtotime($article->created_at)) }}
 		</div>
+		</article>
 	</div>
 </div>
 
@@ -39,12 +41,12 @@
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
-					<label for="name">Email</label>
+					<label for="email">Email</label>
 					<input type="text" class="form-control" name="email" placeholder="Email">
 				</div>
 			</div>
 			<div class="col-md-12">
-				<label for="message">Contenu</label>
+				<label for="content">Contenu</label>
 				<textarea name="content" class="form-control" rows="12"></textarea>
 			</div>
 			<div class="col-md-12">

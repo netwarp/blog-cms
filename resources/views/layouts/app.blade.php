@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,7 +63,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="word">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
+                                    <button class="btn btn-default" type="submit">
                                         <span class="glyphicon glyphicon-search"></span>
                                 </button>
                                 </span>

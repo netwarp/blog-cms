@@ -1,45 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"
-              integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
-              crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/jquery.tinymce.min.js"></script>
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/image/plugin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/paste/plugin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/fullscreen/plugin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/codesample/plugin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/plugins/bbcode/plugin.js"></script>
-
-
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'paste fullscreen codesample code image media',
-            paste_data_images: true,
-            images_upload_url: 'http://localhost:8000',
-            images_upload_base_path: 'http://localhost:8000/assets',
-            location : 'http://localhost:8000/assets/test.jpg',
-            menubar: true,
-            content_style: ".mce-content-body  {font-size: 14px;}",
-            toolbar: 'undo redo bold italic alignleft aligncenter alignright codesample fullscreen code image media'
-       })
-        tinymce.init({
-            selector: '#image',
-            plugins: 'paste codesample code image',
-            paste_data_images: true,
-            menubar: false,
-            toolbar: 'codesample code image'
-        })
-    </script> 
+    <script src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
     <div class="col s12">
         <nav class="blue-grey darken-2">
             <div class="nav-wrapper">
                 <div class="col s12">
-                    <a href="#!" class="breadcrumb">Admin</a>
-                    <a href="#!" class="breadcrumb">Articles</a>
+                    <a href="/admin" class="breadcrumb">Admin</a>
+                    <a href="/admin/articles" class="breadcrumb">Articles</a>
                     <a href="#!" class="breadcrumb">Edit</a>
                 </div>
             </div>
@@ -78,13 +48,16 @@
                         @php
                             $tags = '';
                             foreach ($article->tags as $tag) {
-                                $tags .= $tag->name . ' ';
+                                if (! is_null($tag)) {
+                                    $tags .= $tag->name . ' ';
+                                }
                             }
                         @endphp
                         <div class="input-field">
                             <label>Tags</label>
                             <input type="text" name="tags" title="tags" value="{{ $tags }}">
                         </div>
+                        {{--
                         <div class="input-field">
                             <label>Apercu</label>
                             <textarea name="overview" rows="4" cols="40" id="id" title="overview">{{ $article->overview }}</textarea>
@@ -92,6 +65,10 @@
                         <div class="input-field">
                             <label>Contenu</label>
                             <textarea name="content" rows="15" title="content">{{ $article->content }}</textarea>
+                        </div>
+                        --}}
+                        <div class="input-field">
+                            <textarea name="content" id="editor">{{ markdown($article->content) }}</textarea>
                         </div>
                         <div class="input-field">
                             <button type="submit" class="btn">GO</button>
@@ -101,4 +78,13 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+    <script>
+        var simplemde = new SimpleMDE({
+            element: document.getElementById('editor'),
+            placeholder: 'Content here',
+        });
+    </script>
 @endsection
