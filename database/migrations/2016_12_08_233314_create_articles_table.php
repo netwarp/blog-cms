@@ -18,6 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('image');
+            $table->string('tags');
             $table->text('overview');
             $table->text('content');
             $table->integer('nb_comments')->default(0);

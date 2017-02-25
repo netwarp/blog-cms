@@ -82,13 +82,19 @@
                 <div class="card-content">
                     <h5>Derniers messages</h5>
                     <table class="bordered striped">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             @foreach($last_messages as $message)
                                 <tr>
-                                    <td>
-                                        <p>{{ $message->content }}</p>
-
-                                    </td>
+                                    <td>{{ $message->name }}</td>
+                                    <td>{{ $message->email }}</td>
+                                    <td>{{ date('d F Y', strtotime($article->created_at)) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

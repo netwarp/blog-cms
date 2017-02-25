@@ -42,14 +42,14 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        /*
+        
         $this->validate($request, [
             'title' => 'required',
             'image' => 'image',
-            'overview' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'tags' => 'required'
         ]);
-        */
+        
 
         $article = new Article;
         $article->title = $request->input('title');
@@ -57,11 +57,14 @@ class ArticlesController extends Controller
         $article->slug = str_slug($request->input('title', '-'));
         $article->overview = '';
         $article->content = '';
+        $article->tags = $request->input('tags');
         $article->save();
 
         $tags = $request->input('tags');
+        $article->tags = $tags;
         $tags = explode(' ', $tags);
         $article->tag($tags);
+
         
         $doc = new DOMDocument();
         $doc->loadHTML(Markdown::parse($request->input('content')));
@@ -146,12 +149,13 @@ class ArticlesController extends Controller
             'title' => $request->input('title'),
             'slug' => str_slug($request->input('title')),
             'overview' => $doc->getElementsByTagName('p')->item(0)->nodeValue,
-            'content' => $request->input('content')
         ]);
 
+        
         $tags = $request->input('tags');
         $tags = explode(' ', $tags);
         $article->retag($tags);
+        
 
         foreach ($doc->getElementsByTagName('img') as $image) {
             $src = $image->getAttribute('src');
@@ -165,6 +169,7 @@ class ArticlesController extends Controller
                     $alt = sha1($src);
                 }
                 $image->setAttribute('src', "/api/source/articles/$article->id/$alt.jpg");
+                $image->setAttribute('class', 'img-responsive');
 
                 Storage::put("articles/$article->id/$alt.jpg", $img->stream());
             }

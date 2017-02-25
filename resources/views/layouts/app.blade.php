@@ -36,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="/">
-                        <img src="/img/medialogs.jpg." alt="logo" width="280">
+                        <img src="/img/medialogs.jpg" alt="logo" width="280">
                     </a>
                 </div>
 
