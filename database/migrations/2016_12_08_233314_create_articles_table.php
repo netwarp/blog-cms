@@ -22,6 +22,7 @@ class CreateArticlesTable extends Migration
             $table->text('overview');
             $table->text('content');
             $table->integer('nb_comments')->default(0);
+            $table->enum('status', ['draft', 'published', 'unpublished'])->default('draft');
             $table->timestamps();
         });
     }

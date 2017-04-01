@@ -1,14 +1,3 @@
-@php
-    if (Route::currentRouteName() == 'admin.articles.create') {
-        $title = 'Créér un nouvel article';
-        $params = ['route' => 'admin.articles.store', 'files' => true];
-    }
-    else {
-        $title = "Editer l'article";
-        $params = ['method' => 'PUT','route' => ['admin.articles.update', $article->id], 'files' => true];
-    }
-@endphp
-
 @if (count($errors) > 0)
    <div class="col s12">
        <div class="card">
@@ -32,6 +21,17 @@
                     {{ var_dump(Route::currentRouteName()) }}
                 </pre>
                  --}}
+
+                 @php
+                    if (Route::currentRouteName() == 'admin.articles.create') {
+                        $title = 'Créér un nouvel article';
+                        $params = ['route' => 'admin.articles.store', 'files' => true];
+                    }
+                    else {
+                        $title = "Editer l'article";
+                        $params = ['method' => 'PUT','route' => ['admin.articles.update', $article->id], 'files' => true];
+                    }
+                @endphp
 
                 <h4>{{ $title }}</h4>
                 {!! Form::open($params) !!}

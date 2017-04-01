@@ -6,6 +6,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Article;
+use Elasticsearch\ClientBuilder;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MessageSent;
 
 class BlogController extends Controller {
     
@@ -15,7 +18,6 @@ class BlogController extends Controller {
 
     public function getIndex() {
 
-
     	$articles = DB::table('articles')->orderBy('id', 'desc')->paginate(4);
 
     	return view('blog.index', compact('articles'));
@@ -24,8 +26,26 @@ class BlogController extends Controller {
     public function getSearch(Request $request) {
         $word = $request->input('word');
 
-        $articles = Article::where('content', 'LIKE', "%$word%")->paginate(4); 
+        
+        $client = ClientBuilder::create()->build();
 
+        $params = [
+            'index' => 'blog',
+            'body' => [
+                'query' => [
+                    'match' => [
+                        'title' => $word
+                    ]
+                ]
+            ]
+        ];
+        $result = $client->search($params);
+
+        $ids = [];
+        foreach ($result['hits']['hits'] as $result) {
+            array_push($ids, $result['_id']);
+        }
+        $articles = DB::table('articles')->whereIn('id', $ids)->paginate();
         return view('blog.index', compact('articles'));
     }
 
@@ -70,9 +90,29 @@ class BlogController extends Controller {
     }
 
     public function getTag($tag) {
-        $articles = Article::withAnyTag($tag)->paginate(5);
+
+        $client = ClientBuilder::create()->build();
+
+        $params = [
+            'index' => 'blog',
+            'body' => [
+                'query' => [
+                    'match' => [
+                        'tags' => $tag
+                    ]
+                ]
+            ]
+        ];
+        $result = $client->search($params);
+        $ids = [];
+
+        foreach ($result['hits']['hits'] as $result) {
+            array_push($ids, $result['_id']);
+        }
+        $articles = DB::table('articles')->whereIn('id', $ids)->paginate();
 
         return view('blog.index', compact('articles'));
+ 
     }
 
     public function getProjets() {
@@ -98,6 +138,7 @@ class BlogController extends Controller {
             'message' => 'required'
         ]);
 
+        /*
         DB::table('messages')->insert([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -105,6 +146,9 @@ class BlogController extends Controller {
             'ip' => $request->ip(),
             'created_at' => Carbon::now()
         ]);
+        */
+
+        Mail::to($request->input('email'))->send(new MessageSent());
 
         return redirect()->back()->with('success', 'Votre message a été envoyé');
     }

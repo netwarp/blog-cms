@@ -30,7 +30,8 @@
                     <li>achat de nom de domaine</li>
                     <li>formation sur les bases du HTML et CSS</li>
                 </ul>
-                <a href="/contact">Contactez moi</a>
+                <hr>
+                <a href="/contact" class="btn btn-default btn-block btn-lg">Contactez moi</a>
             </p>
         </div>
     </div>

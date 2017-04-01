@@ -134,7 +134,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        {{ date('Y') }} - Le contenu du blog est en licence WTFPL
+                        {{ date('Y') }} - L'intégralité du contenu de ce blog est en licence WTFPL.
                     </div>
                 </div>
             </div>

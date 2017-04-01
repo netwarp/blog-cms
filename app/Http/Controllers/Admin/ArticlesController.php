@@ -10,6 +10,7 @@ use DOMDocument;
 use Image;
 use Storage;
 use Markdown;
+use Elasticsearch\ClientBuilder;
 
 class ArticlesController extends Controller
 {
@@ -49,7 +50,6 @@ class ArticlesController extends Controller
             'content' => 'required',
             'tags' => 'required'
         ]);
-        
 
         $article = new Article;
         $article->title = $request->input('title');
@@ -103,7 +103,20 @@ class ArticlesController extends Controller
         }
         
         $article->save();
-        
+
+        $client = ClientBuilder::create()->build();
+        $params = [
+            'index' => 'blog',
+            'type' => 'article',
+            'id' => $article->id,
+            'body' => [
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+                'tags' => $request->input('tags')
+            ]
+        ];
+        $response = $client->index($params);
+
         return redirect('/admin/articles')->with('message_success', "L'article a bien été ajouté");
     }
 
@@ -198,6 +211,23 @@ class ArticlesController extends Controller
 
         $article->save();
 
+        $client = ClientBuilder::create()->build();
+        $params = [
+            'index' => 'blog',
+            'type' => 'article',
+            'id' => $article->id,
+            'body' => [
+                'doc' => [
+                    'title' => $request->input('title'),
+                    'content' => $request->input('content'),
+                    'tags' => $request->input('tags')
+                ]
+            ]
+        ];
+        $response = $client->update($params);
+
+
+
         return redirect()->route('admin.articles.index')->with('message', "L'article a bien été modifié");
     }
 
@@ -211,6 +241,14 @@ class ArticlesController extends Controller
     {
         DB::table('articles')->where('id', $id)->delete();
         Storage::deleteDirectory("articles/$id");
+
+        $client = ClientBuilder::create()->build();
+        $params = [
+            'index' => 'my_index',
+            'type' => 'my_type',
+            'id' => $id
+        ];
+        $response = $client->delete($params);
 
         return redirect()->back()->with('message_success', "L'article a bien été supprimé");
     }
