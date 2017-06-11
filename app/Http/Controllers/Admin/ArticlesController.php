@@ -9,7 +9,6 @@ use App\Models\Article;
 use DOMDocument;
 use Image;
 use Storage;
-use Markdown;
 use Elasticsearch\ClientBuilder;
 
 class ArticlesController extends Controller
@@ -67,7 +66,7 @@ class ArticlesController extends Controller
 
         
         $doc = new DOMDocument();
-        $doc->loadHTML(Markdown::parse($request->input('content')));
+        $doc->loadHTML($request->input('content'));
 
         $article->overview = $doc->getElementsByTagName('p')->item(0)->nodeValue;
 

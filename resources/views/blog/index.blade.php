@@ -21,7 +21,9 @@
 				<a href="/article/{{ $article->id }}/{{ $article->slug }}"><img class="img-responsive" src="{{ $article->image }}" alt=""></a>
 			@endif
 		    <div class="panel-body">
-				@markdown($article->overview)
+				<p>
+					{!! $article->overview !!}
+				</p>
 				<a href="/article/{{ $article->id }}/{{ $article->slug }}" class="btn btn-primary">Lire plus <span class="glyphicon glyphicon-chevron-right"></span></a>
 		     </div>
 		</div>

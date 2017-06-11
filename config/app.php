@@ -184,6 +184,9 @@ return [
         Indal\Markdown\MarkdownServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+        'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'
+
+
     ],
 
     /*
@@ -236,6 +239,8 @@ return [
         'Markdown' => Indal\Markdown\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'HTMLMin' => 'GrahamCampbell\HTMLMin\Facades\HTMLMin'
+
     ],
 
 ];

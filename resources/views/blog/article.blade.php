@@ -9,7 +9,7 @@
 		<article>
 		<h1>{{ $article->title }}</h1>
 		<br>
-		@markdown($article->content)
+		{!! $article->content !!}
 		<hr>
 		<div>
 			{{ date('d F Y', strtotime($article->created_at)) }}
@@ -22,13 +22,17 @@
 	<div class="panel-heading"><span class="h4">Commentaires</span></div>
 	<div class="panel-body">
 		@if (session('success'))
-			<div class="alert alert-success">
-				{{ session('success') }}
+			<div class="col-md-12">
+				<div class="alert alert-success">
+					{{ session('success') }}
+				</div>
 			</div>
 		@else
-			<div class="alert alert-info">
-				Bien que nous soyons partisans d'une liberté d'expression totale, nous rappelons à nos lecteurs que l'éspace de commentaires n'est pas un défouloire et que la courtoisie y est de mise. <br>
-				La modération.
+			<div class="col-md-12">
+				<div class="alert alert-info">
+					Bien que nous soyons partisans d'une liberté d'expression totale, nous rappelons à nos lecteurs que l'éspace de commentaires n'est pas un défouloire et que la courtoisie y est de mise. <br>
+					La modération.
+				</div>
 			</div>
 		@endif
 		<form action="/article/{{ $article->id }}" method="POST">
