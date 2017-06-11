@@ -138,7 +138,6 @@ class BlogController extends Controller {
             'message' => 'required'
         ]);
 
-        /*
         DB::table('messages')->insert([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -146,7 +145,6 @@ class BlogController extends Controller {
             'ip' => $request->ip(),
             'created_at' => Carbon::now()
         ]);
-        */
 
         Mail::to($request->input('email'))->send(new MessageSent());
 

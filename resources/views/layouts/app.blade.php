@@ -101,6 +101,20 @@
                         <h4>On est ou là ?</h4>
                         <p>Sur ce blog ça cause de code, de politique parfois, et d'outils dédiés à la sécurité et au contournement de la censure.<br> Plus d'infos sur <a href="/a-propos">cette page</a></p>
                     </div>
+
+                    <div class="well">
+                        <h4>Derniers articles</h4>
+                        @php
+                            $articles = DB::table('articles')->limit(5)->get();
+                        @endphp
+
+                        <ul class="list-unstyled">
+                            @foreach($articles as $article)
+                                <li><a href="/article/{{ $article->id }}/{{ $article->slug }}">{{ $article->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+
                     <div class="well">
                         <h4>Abonnez vous à la newsletter <br> <small>on spam pas promis</small></h4>
                         <form action="/newsletters" method="POST">

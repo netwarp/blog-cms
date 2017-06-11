@@ -69,6 +69,7 @@
                             Importer une sauvegarde
                         </label>
                         <input type="file" id="file" name="file" style="display:none">
+                        <button type="submit" class="btn">Envoie</button>
                     </form>
                 </div>
             </div>
