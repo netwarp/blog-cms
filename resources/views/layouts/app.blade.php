@@ -69,7 +69,6 @@
                                 </span>
                             </div>
                         </form>
-
                     </div>
                     <div class="well">
                         <h4>Categories</h4>

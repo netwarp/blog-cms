@@ -22,6 +22,8 @@ class CreateCommentsCreate extends Migration
             $table->integer('article_id')->unsigned();
             $table->foreign('article_id')->references('id')->on('articles');
 
+            $table->boolean('validated')->default(false);
+
             $table->string('ip');
             $table->timestamps();
         });
